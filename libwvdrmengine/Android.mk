@@ -14,6 +14,9 @@ LOCAL_MODULE_CLASS := EXECUTABLES
 LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR)/bin/hw
 LOCAL_PROPRIETARY_MODULE := true
 LOCAL_SRC_FILES := $(LOCAL_MODULE)
+LOCAL_SHARED_LIBRARIES := android.hardware.drm@1.0 android.hardware.drm@1.1 libbase libbinder \
+	libc++ libc libdl libhidltransport libhwbinder liblog libm libutils libwvhidl
+LOCAL_ALLOW_UNDEFINED_SYMBOLS := true
 include $(BUILD_PREBUILT)
 
 # libwvhidl.so
@@ -28,6 +31,10 @@ LOCAL_PROPRIETARY_MODULE := true
 LOCAL_STRIP_MODULE := false
 LOCAL_32_BIT_ONLY := true
 LOCAL_MODULE_TAGS := optional
+LOCAL_SHARED_LIBRARIES := android.hardware.drm@1.0 android.hardware.drm@1.1 \
+	android.hidl.memory@1.0 libc++ libc libcutils libdl libhidlbase libhidlmemory libhidltransport \
+	libhwbinder liblog libm libprotobuf-cpp-lite libutils
+LOCAL_CHECK_ELF_FILES := false
 include $(BUILD_PREBUILT)
 
 endif # TARGET_ARCH == arm
